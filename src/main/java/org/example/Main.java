@@ -34,31 +34,31 @@ public class Main extends TelegramLongPollingBot {
         Long chatId = getChatId(update);
 
         if (update.hasMessage() && update.getMessage().getText().equals("/start")) {
-            SendMessage message = createMessage("Привіт!");
+            SendMessage message = createMessage("Привіт. ти любиш Романа?");
             message.setChatId(chatId);
-            attachButtons(message, new HashMap<String, String>() {{ put("Слава Україні", "glory_for_ukraine"); }});
+            attachButtons(message, new HashMap<String, String>() {{ put("так. я не можу без нього", "glory_for_ukraine"); }});
             sendApiMethodAsync(message);
         }
 
         if (update.hasCallbackQuery()){
             if (update.getCallbackQuery().getData().equals("glory_for_ukraine")){
-                SendMessage message = createMessage("Героям Слава");
+                SendMessage message = createMessage("І він тебе любить");
                 message.setChatId(chatId);
 
-                attachButtons(message, new HashMap<String, String>() {{ put("Слава Нації!", "glory_of_the_nation"); }});
+                attachButtons(message, new HashMap<String, String>() {{ put("це так мило, я йому за це зроблю...", "glory_of_the_nation"); }});
                 sendApiMethodAsync(message);
             }
         }
 
         if (update.hasCallbackQuery()){
             if (update.getCallbackQuery().getData().equals("glory_of_the_nation")){
-                SendMessage message = createMessage("Смерть Ворогам");
+                SendMessage message = createMessage("о да. давай.");
                 message.setChatId(chatId);
                 sendApiMethodAsync(message);
             }
         }
     }
-
+/// only for test branch
     public Long getChatId( Update update){
 
         if (update.hasMessage()){
