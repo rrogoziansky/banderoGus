@@ -1,10 +1,8 @@
 package org.example;
 
-import com.sun.javafx.collections.MappingChange;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.objects.Chat;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
@@ -12,12 +10,7 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.*;
-
-import static javax.swing.UIManager.put;
 
 public class Main extends TelegramLongPollingBot {
     public static void main(String[] args) throws TelegramApiException {
@@ -96,7 +89,7 @@ public class Main extends TelegramLongPollingBot {
             button.setText(new String(buttonName.getBytes(), StandardCharsets.UTF_8) );
             button.setCallbackData(buttonValue);
 
-            keyboard.add(Arrays.asList(button));
+            keyboard.add(Collections.singletonList(button));
         }
         markup.setKeyboard(keyboard);
         message.setReplyMarkup(markup);
